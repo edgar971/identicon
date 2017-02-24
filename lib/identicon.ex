@@ -3,6 +3,9 @@ defmodule Identicon do
   Documentation for Identicon.
   """
 
+  @doc """
+  The main function to call in order to generate an identicon givin `input`. 
+  """
   def main(input) do 
     input 
     |> hash_input
@@ -14,12 +17,18 @@ defmodule Identicon do
     |> save_image(input)
   end
 
+  @doc """
+  Save the image to the local file system. 
+  """
   def save_image(image, input) do 
 
     File.write("#{input}.png", image)
 
   end
 
+  @doc """
+  Draws the image
+  """
   def draw_image(%Identicon.Image{color: color, pixel_map: pixel_map }) do 
 
       image = :egd.create(250, 250)
